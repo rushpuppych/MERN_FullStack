@@ -45,6 +45,12 @@ Download [MongoDB Comunity Server](https://www.mongodb.com/)
 
 TODO: Installation Guide From GitHub
 
+# Working with the MERN Stack
+If you want to build your own Projects with the MERN Stack you have to Read this.
+
+## Project Structure
+This is the documentation of the Folder Structure
+
 ## Configuration
 This is how you can Config your MERN_FullStack
 
