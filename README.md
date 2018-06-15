@@ -36,6 +36,11 @@ for that you need to install Node.js.
 
 Download [Node.js](https://nodejs.org/en/)
 
+#### MongoDB Comunity Server
+For the MERN Stack we need to install MongoDb. This is a blazing fast Document driven NoSql Databse.
+
+Download [MongoDB Comunity Server](https://www.mongodb.com/)
+
 #### MERN_FullStack Installation
 
 TODO: Installation Guide From GitHub
