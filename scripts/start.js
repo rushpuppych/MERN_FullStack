@@ -13,11 +13,11 @@ process.on('unhandledRejection', err => {
 
 // Ensure environment variables are read.
 require('../config/env');
-
 const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+const Api = require('../api/Api');
 const clearConsole = require('react-dev-utils/clearConsole');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const {
@@ -40,7 +40,8 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_WEB_PORT = parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_API_PORT = parseInt(process.env.API_PORT, 10) || 4000;
 const HOST = process.env.HOST || '0.0.0.0';
 
 if (process.env.HOST) {
@@ -60,7 +61,7 @@ if (process.env.HOST) {
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `choosePort()` Promise resolves to the next free port.
-choosePort(HOST, DEFAULT_PORT)
+choosePort(HOST, DEFAULT_WEB_PORT)
   .then(port => {
     if (port == null) {
       // We have not found a port.
@@ -88,8 +89,16 @@ choosePort(HOST, DEFAULT_PORT)
       if (isInteractive) {
         clearConsole();
       }
-      console.log(chalk.cyan('Starting the development server...\n'));
+      console.log(chalk.cyan('Starting the development server...'));
       openBrowser(urls.localUrlForBrowser);
+    });
+
+    // Launch Api Server
+    Api.listen(DEFAULT_API_PORT, HOST, err => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(chalk.cyan('Starting the REST Api server...\n'));
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
