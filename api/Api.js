@@ -1,10 +1,26 @@
 const express = require('express');
-const expressControllers = require('express-controller');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
+const config = require('../config/api.config.js');
 
-// Register Controllers
-app.use(require('./controllers/DefaultController'));
-app.use(require('./controllers/DemoController'));
+// Config and set BodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+// Config and set MongoDB (mongoose)
+/*
+mongoose.connect(config.mongodb.url)
+.then(() => {
+    console.log("Successfully connected to the database");    
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...');
+    process.exit();
+});
+*/
+
+// Register Routes
+require('./routes/DemoRoutes.js')(app);
 
 // Export Api Server
 module.exports = app;
