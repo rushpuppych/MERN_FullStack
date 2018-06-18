@@ -7,7 +7,6 @@
 ## Major Todos
 - MongoDb Connection
 - Test API
-- Find a good way for generated API Doc
 - Find a good way for generated Doc
 - Adding JWT Mechanism for Stateless REST
 - Integration AXIOS, REDUX
