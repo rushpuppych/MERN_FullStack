@@ -2,13 +2,22 @@
 module.exports = (app) => {
     const controller = require('../controllers/DemoController.js');
 
-    // Create a new Note
+    // Create Demo
     app.post('/demo', controller.create);
 
-    // Retrieve all Notes
+    // Get All Back
     app.get('/demo', controller.findAll);
 
-    // Retrieve a single Note with noteId
+    /**
+     * @api {post} /demo/:id Request Demo Information of specific Demo Object
+     * @apiName DemoApi
+     * @apiGroup Demo
+     *
+     * @apiParam {Number} id Users unique ID.
+     *
+     * @apiSuccess {String} firstname Firstname of the User.
+     * @apiSuccess {String} lastname  Lastname of the User.
+     */
     app.get('/demo/:demoId', controller.findOne);
 
     // Update a Note with noteId

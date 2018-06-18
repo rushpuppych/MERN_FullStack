@@ -42,11 +42,33 @@ For the MERN Stack we need to install MongoDb. This is a blazing fast Document d
 Download [MongoDB Comunity Server](https://www.mongodb.com/)
 
 #### MERN_FullStack Installation
-
 TODO: Installation Guide From GitHub
 
 ## Working with the MERN Stack
 If you want to build your own Projects with the MERN Stack you have to Read this.
+
+### Scripts
+There are some scripts integratet in the MERN Stack Project wich are helping you.
+
+Run APP and API server.
+```
+npm start
+```
+
+Unittesting
+```
+npm test
+```
+
+Create API and DEV Docs.
+```
+npm run apidoc
+```
+
+Build
+```
+npm build
+```
 
 ### Project Structure
 This is the documentation of the Folder Structure

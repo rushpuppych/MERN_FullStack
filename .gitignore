@@ -9,6 +9,10 @@
 # production
 /build
 
+# generated docs
+/docs/api
+/docs/app
+
 # misc
 .DS_Store
 .env.local

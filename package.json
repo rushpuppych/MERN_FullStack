@@ -52,7 +52,8 @@
   "scripts": {
     "start": "concurrently \"node scripts/startApp.js\" \"node scripts/startApi.js\"",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "apidoc": "apidoc -i api/routes/ -o docs/api"
   },
   "jest": {
     "collectCoverageFrom": [
