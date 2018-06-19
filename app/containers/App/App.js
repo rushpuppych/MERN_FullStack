@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import styles from './App.css';
 import Layout from '../../containers/Layouts/PublicPage/PublicPage';
+import Demo from '../../components/Demo/Demo'
 
 class App extends Component {
   render() {
     return (
       <Layout>
-        <p>Content</p>
+        <Demo>Content</Demo>
       </Layout>
     );
   }

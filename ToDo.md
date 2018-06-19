@@ -9,7 +9,6 @@
 - Find a good way for generated Doc
 - Adding JWT Mechanism for Stateless REST
 - Integration AXIOS, REDUX
-- Language Support
 
 ## Fullstack ToDos
 - Build Login Page
