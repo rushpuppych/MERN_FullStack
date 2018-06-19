@@ -2,7 +2,6 @@
 ## BugFixes
 - Api Server Run with Nodemon
 - Make Server Stopable with CTRL+C (now it crashes and hangs)
-- Fix CSS Modules
 
 ## Major Todos
 - MongoDb Connection
