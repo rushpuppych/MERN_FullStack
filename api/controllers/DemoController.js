@@ -3,7 +3,7 @@
 // Include Models
 //const Note = require('../models/note.model.js');
 
-module.exports = {
+const controller = {
   create: (req, res) => {
     res.json({'message': 'create'});
   },
@@ -24,3 +24,5 @@ module.exports = {
     res.json({'message': 'delete'});
   }
 };
+
+module.exports = controller;

@@ -3,7 +3,7 @@ import Aux from '../../../hoc/ReactAux';
 import {Navbar} from 'react-materialize';
 import Theme from '../../../assets/themes/Default';
 
-class PublicPage extends Component {
+class PrivatePage extends Component {
     render() {
         return (
             <Aux>
@@ -11,11 +11,11 @@ class PublicPage extends Component {
                 </Navbar>
 
                 <main>
-                    {this.props.children}
+                    <h1>Private Area</h1>
                 </main>
             </Aux>
         );
     }
 };
 
-export default PublicPage;
+export default PrivatePage;

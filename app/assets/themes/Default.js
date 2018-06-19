@@ -13,8 +13,8 @@ const theme = {
     },
     components: {
         demo: {
-            textColor: "red-text lighten-2",
-            backgroundColor: "cyan"
+            textColor: "black-text",
+            backgroundColor: "white"
         }
     }
 }
