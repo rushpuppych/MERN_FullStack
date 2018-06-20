@@ -1,22 +1,21 @@
 import React from 'react';
 import {Card, Button, Icon, Input} from 'react-materialize';
-import Theme from '../../assets/themes/Default';
-import Lang from './LoginPanelLang';
+import Theme from '../../../assets/themes/Default';
+import Lang from './PasswordRestorePanelLang';
+import Spacer from '../../../hoc/Spacer';
 
-const loginPanel = (props) => (
+const passwordRestorePanel = (props) => (
     <Card className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
         actions={[
-            <Button waves='light'>{Lang.login_button}<Icon right>input</Icon></Button>
+            <Button waves='light'>{Lang.restore_button}<Icon right>email</Icon></Button>
         ]}>
-
         {Lang.content}
         <div>
             <Input label={Lang.email} s={12} />
-            <Input type="password" label={Lang.password} s={12} />
         </div>
-        <span>&nbsp;</span>
+        <Spacer/>
     </Card>
 );
 
-export default loginPanel;
+export default passwordRestorePanel;
 

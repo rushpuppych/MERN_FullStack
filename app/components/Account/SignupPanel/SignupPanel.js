@@ -1,7 +1,8 @@
 import React from 'react';
 import {Card, Button, Icon, Input} from 'react-materialize';
-import Theme from '../../assets/themes/Default';
+import Theme from '../../../assets/themes/Default';
 import Lang from './SignupPanelLang';
+import Spacer from '../../../hoc/Spacer';
 
 const signupPanel = (props) => (
     <Card className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
@@ -17,7 +18,7 @@ const signupPanel = (props) => (
             <Input type="password" label={Lang.password} s={12} />
             <Input type="password" label={Lang.passwordre} s={12} />
         </div>
-        <span>&nbsp;</span>
+        <Spacer/>
     </Card>
 );
 
