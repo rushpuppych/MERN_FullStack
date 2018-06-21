@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
-import {Navbar, NavItem} from 'react-materialize';
+import {Route, Link} from 'react-router-dom';
+import {Row, Navbar} from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
 import LoginPanel from '../../../components/Account/LoginPanel/LoginPanel';
@@ -12,11 +12,13 @@ class PublicPage extends Component {
     render() {
         return (
             <Aux>
-                <Navbar className={Theme.containers.layouts.publicPage.backgroundColor} brand='&nbsp;MERN-Stack' fixed right>
-                    <NavItem href='/'>Login</NavItem>
-                    <NavItem href='/signup'>Signup</NavItem>
-                    <NavItem href='/restore'>Restore Password</NavItem>
-                </Navbar>
+                <Row>    
+                    <Navbar className={Theme.containers.layouts.publicPage.backgroundColor} brand='MERN-Stack' fixed right>
+                        <li><Link to="/">Login</Link></li>
+                        <li><Link to="/signup">SignUp</Link></li>
+                        <li><Link to="/restore">Restore Password</Link></li>
+                    </Navbar>
+                </Row>
 
                 <main>
                     <Route path="/" exact component={LoginPanel} />

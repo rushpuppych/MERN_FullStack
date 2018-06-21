@@ -1,11 +1,11 @@
 
 const mongoose = require('mongoose');
 
-const DemoSchema = mongoose.Schema({
+const account = mongoose.Schema({
     title: String,
     content: String
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('Note', DemoSchema);
+module.exports = mongoose.model('account', account);
