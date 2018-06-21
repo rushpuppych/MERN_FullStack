@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Aux from '../../../hoc/ReactAux';
 import {Navbar} from 'react-materialize';
+import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
 
 class PrivatePage extends Component {
