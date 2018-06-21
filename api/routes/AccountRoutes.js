@@ -9,13 +9,13 @@ module.exports = (app) => {
      * @api {post} /account/signin User Login
      *
      * @apiParam {String} email E-Mail Address
-     * @apiParam {String} password Password as sha1 hash
+     * @apiParam {String} password Password as sha256 hash
      *
      * @apiSuccess {Boolean} status This is true when success
-     * @apiSuccess {String} error_code (Only when Status is false) This holds the Error Code.
-     * @apiSuccess {String} token (Only when Status is true) This is the valid JWT Token
+     * @apiSuccess {String} error_code (Only when <code>status</code> is false) This holds the Error Code.
+     * @apiSuccess {String} jwt_token (Only when <code>status</code> is true) This is the valid JWT Token
      */
-    app.post('/account/signin', Controller.signin);
+    app.post('/account/signin', Controller.signIn);
 
     /**
      * @apiGroup Account
@@ -25,11 +25,11 @@ module.exports = (app) => {
      * @apiParam {String} firstname Firstname
      * @apiParam {String} familyname Familyname
      * @apiParam {String} email E-Mail Address.
-     * @apiParam {String} password Password as sha1 hash
-     * @apiParam {String} passwordre Password retyped as sha1 hash
+     * @apiParam {String} password Password as sha256 hash
+     * @apiParam {String} passwordre Password retyped as sha256 hash
      *
      * @apiSuccess {Boolean} status This is true when success
-     * @apiSuccess {String} error_code (Only when Status is false) this holds the Error Code.
+     * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
      */
     app.post('/account/signup', Controller.signUp);
 
@@ -38,10 +38,10 @@ module.exports = (app) => {
      * @apiName Vertification
      * @api {get} /account/vertify/:id Email Vertification
      *
-     * @apiParam {String} :id Vertification Code (Base64(email + sha1(email + secret)))
+     * @apiParam {String} :id Vertification Code (Base64(email + sha256(email + secret)))
      *
      * @apiSuccess {Boolean} status This is true when success
-     * @apiSuccess {String} error_code (Only when Status is false) this holds the Error Code.
+     * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
      */
     app.get('/account/vertification', Controller.vertification);
 
@@ -53,7 +53,7 @@ module.exports = (app) => {
      * @apiParam {String} :email Email address of user account
      *
      * @apiSuccess {Boolean} status This is true when success
-     * @apiSuccess {String} error_code (Only when Status is false) this holds the Error Code.
+     * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
      */
     app.get('/account/reset', Controller.reset);    
 }

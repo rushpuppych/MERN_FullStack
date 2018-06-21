@@ -20,7 +20,6 @@ mongoose.connect(config.mongodb.url)
 */
 
 // Register Routes
-require('./routes/DemoRoutes.js')(app);
 require('./routes/AccountRoutes.js')(app);
 
 // Export Api Server

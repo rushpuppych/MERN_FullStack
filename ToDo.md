@@ -3,6 +3,10 @@
 - Api Server Run with Nodemon
 - Make Server Stopable with CTRL+C (now it crashes and hangs)
 
+## NextSteps
+- Adding JWT Middleware for the routes
+- Axios Response Extract Token
+
 ## Major Todos
 - MongoDb Connection
 - Test API

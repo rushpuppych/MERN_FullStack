@@ -2,8 +2,10 @@
 const mongoose = require('mongoose');
 
 const account = mongoose.Schema({
-    title: String,
-    content: String
+    firstname: String,
+    familyname: String,
+    email: String,
+    password: String
 }, {
     timestamps: true
 });
