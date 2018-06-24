@@ -13,9 +13,18 @@ import Lang from './SignupPanelLang';
 class signupPanel extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            firstname: '',
+            familyname: '',
+            email: '',
+            password: '',
+            paswordre: ''
+        }
+
 
         // Event Binding
         this.onSignup = this.onSignup.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     /**
@@ -23,6 +32,14 @@ class signupPanel extends Component {
      */
     onSignup(e) {
         this.props.signupAccount();
+        
+    }
+
+    /**
+     * OnChange Handler for State update
+     */
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     /**
@@ -39,11 +56,11 @@ class signupPanel extends Component {
 
                         {Lang.content}
                         <div>
-                            <Input label={Lang.firstname} s={6} />
-                            <Input label={Lang.familyname} s={6} />
-                            <Input label={Lang.email} s={12} />
-                            <Input type="password" label={Lang.password} s={12} />
-                            <Input type="password" label={Lang.passwordre} s={12} />
+                            <Input name="firstname" onChange={this.onChange} label={Lang.firstname} s={6} />
+                            <Input name="familyname" onChange={this.onChange} label={Lang.familyname} s={6} />
+                            <Input name="email" onChange={this.onChange} label={Lang.email} s={12} />
+                            <Input name="password" onChange={this.onChange} type="password" label={Lang.password} s={12} />
+                            <Input name="passwordre" onChange={this.onChange} type="password" label={Lang.passwordre} s={12} />
                         </div>
                     </Card>
                 </Col>
@@ -63,6 +80,7 @@ const mapStateToProps = state => ({
 
 // TODO: https://www.youtube.com/watch?v=93p3LxR9xfM
 // REDO: Tutorial and check the mapStateToProps thing i dont get that :-D
+// REDO: And there is a State why? i thaught that redux will replace the state ?
 
 // Component Export
 export default connect(null, { signupAccount })(signupPanel);
