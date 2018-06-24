@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Route, Link} from 'react-router-dom';
-import {Row, Navbar} from 'react-materialize';
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import { Row, Navbar } from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
 import LoginPanel from '../../../components/Account/LoginPanel/LoginPanel';

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Card, CardTitle, Button, Icon, Input, Row, Col} from 'react-materialize';
+import React, { Component } from 'react';
+import { Card, CardTitle, Button, Icon, Input, Row, Col } from 'react-materialize';
 import Theme from '../../../assets/themes/Default';
 import Lang from './LoginPanelLang';
 

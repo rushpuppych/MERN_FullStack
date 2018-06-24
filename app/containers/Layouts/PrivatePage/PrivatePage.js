@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Row, Navbar} from 'react-materialize';
+import React, { Component } from 'react';
+import { Row, Navbar } from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
 

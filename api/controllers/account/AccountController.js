@@ -36,7 +36,7 @@ const publicController = {
         // TODO: this comes later
 
         // Create and Sign JWT Token
-        const cert = fs.readFileSync('./' + config.security.jwt_cert);
+        const cert = fs.readFileSync('./' + config.security.jwt_cert); 
         const payload = {foo: 'bar'};
         const token = jwt.sign(payload, cert, {algorithm: 'RS256', expiresIn: '12h'});
         res.json({'status': 'true' , 'jwt_token': token});

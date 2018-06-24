@@ -1,0 +1,6 @@
+
+// Account Types
+export const SIGNIN_ACCOUNT = 'SIGNIN_ACCOUNT';
+export const SIGNUP_ACCOUNT = 'SIGNUP_ACCOUNT'; 
+export const RESTORE_ACCOUNT = 'RESTORE_ACCOUNT'; 
+export const UNLOCK_ACCOUNT = 'UNLOCK_ACCOUNT'; 

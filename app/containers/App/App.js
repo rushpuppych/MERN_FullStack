@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Cookie from 'cookie-machine';
 import PublicPage from '../../containers/Layouts/PublicPage/PublicPage';
 import PrivatePage from '../../containers/Layouts/PrivatePage/PrivatePage';
