@@ -45,18 +45,18 @@ const publicController = {
 
     // SignUp Method
     signUp: (req, res) => {
-        res.json({'status': '200'});
+        res.json({'status': 'true'});
     },
 
     // Email Vertification Method
     vertification: (req, res) => {
-        res.json({'status': '200'});
+        res.json({'status': 'true'});
     },
 
     // Password Reset Method
     reset: (req, res) => {
         const newPassword = StringHelper.generateRandomPassword(8);
-        res.json({'status': '200'});
+        res.json({'status': 'true'});
     },
 };
   

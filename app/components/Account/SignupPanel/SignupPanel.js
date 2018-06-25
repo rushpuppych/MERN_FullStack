@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signupAccount } from '../../../redux/actions/accountActions';
 import { Card, CardTitle, Button, Icon, Input, Row, Col } from 'react-materialize';
@@ -13,33 +12,33 @@ import Lang from './SignupPanelLang';
 class signupPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            firstname: '',
-            familyname: '',
-            email: '',
-            password: '',
-            paswordre: ''
-        }
-
 
         // Event Binding
         this.onSignup = this.onSignup.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
+    // Local State
+    localState = {
+        firstname: '',
+        familyname: '',
+        email: '',
+        password: '',
+        passwordre: ''
+    }
+
     /**
      * Signup Method
      */
     onSignup(e) {
-        this.props.signupAccount();
-        
+        this.props.signupAccount(this.localState);
     }
 
     /**
      * OnChange Handler for State update
      */
     onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+        this.localState[e.target.name] = e.target.value;
     }
 
     /**
@@ -68,19 +67,6 @@ class signupPanel extends Component {
         )
     }
 }
-
-// Component PropTypes
-signupPanel.propTypes = {
-    singupAccount: PropTypes.func.isRequired
-}
-
-const mapStateToProps = state => ({
-    account: state.account
-});
-
-// TODO: https://www.youtube.com/watch?v=93p3LxR9xfM
-// REDO: Tutorial and check the mapStateToProps thing i dont get that :-D
-// REDO: And there is a State why? i thaught that redux will replace the state ?
 
 // Component Export
 export default connect(null, { signupAccount })(signupPanel);
