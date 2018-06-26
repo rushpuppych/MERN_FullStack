@@ -50,6 +50,11 @@ If you want to build your own Projects with the MERN Stack you have to Read this
 ### Scripts
 There are some scripts integratet in the MERN Stack Project wich are helping you.
 
+Run MongoDB
+```
+mongod
+```
+
 Run APP and API server.
 ```
 npm start

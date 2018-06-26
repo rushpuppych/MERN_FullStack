@@ -13,7 +13,6 @@ app.use(bodyParser.json())
 app.use(cors());
 
 // Config and set MongoDB (mongoose)
-/*
 mongoose.connect(config.mongodb.url)
 .then(() => {
     console.log("Successfully connected to the database");    
@@ -21,7 +20,6 @@ mongoose.connect(config.mongodb.url)
     console.log('Could not connect to the database. Exiting now...');
     process.exit();
 });
-*/
 
 // Register Routes
 require('./routes/AccountRoutes.js')(app);

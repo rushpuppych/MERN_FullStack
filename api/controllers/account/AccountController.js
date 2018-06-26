@@ -16,36 +16,42 @@ const privateController = {
 const publicController = {
     // SignIn Method
     signIn: (req, res) => {
-        // TODO: This must come from Database
-        const email = 'info@demo.com';
-        const password = sha256('test');
-        
-        // Check email is invalid
-        if(req.body.email != email){
-            res.json({'status': 'false' , 'error_code': 'email'});
-            return;
-        }
+        AccountModel.findOne({
+            email: req.body.email,
+            password: sha256(config.security.hash_salt + '::' + req.body.password)
+        } ,(err, account) => {
+            if(err != null) {res.status(404);res.send('DB_ERROR');return}
+            if(account != null) {
 
-        // Check if password is invalid
-        if(req.body.password != password) {
-            res.json({'status': 'false' , 'error_code': 'password'});
-            return;
-        }
+                // Check if user is blocked
+                // TODO: this comes later
 
-        // Check if user is blocked
-        // TODO: this comes later
-
-        // Create and Sign JWT Token
-        const cert = fs.readFileSync('./' + config.security.jwt_cert); 
-        const payload = {foo: 'bar'};
-        const token = jwt.sign(payload, cert, {algorithm: 'RS256', expiresIn: '12h'});
-        res.json({'status': 'true' , 'jwt_token': token});
-        return;
+                // Create and Sign JWT Token
+                const cert = fs.readFileSync('./' + config.security.jwt_cert); 
+                const payload = {foo: 'bar'};
+                const token = jwt.sign(payload, cert, {algorithm: 'RS256', expiresIn: '12h'});
+                res.json({'status': 'true' , 'jwt_token': token});
+                return;
+            } else {
+                res.json({'status': 'false' , 'error_code': 'INVALID_CREDENTIALS'});
+                return;
+            }
+        });
     },
 
     // SignUp Method
     signUp: (req, res) => {
-        res.json({'status': 'true'});
+        // todo: Check if Email is existing
+    
+        req.body.password = sha256(config.security.hash_salt + '::' + req.body.password);
+        const account = new AccountModel(req.body);
+    
+        // todo: Schema Validation
+
+        account.save((err) => {
+            if(err != null) {res.status(404);res.send('DB_ERROR');return}
+            res.json({'status': 'true'});
+        });
     },
 
     // Email Vertification Method
