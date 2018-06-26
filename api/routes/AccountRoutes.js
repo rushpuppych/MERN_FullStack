@@ -14,6 +14,7 @@ module.exports = (app) => {
      * @apiSuccess {Boolean} status This is true when success
      * @apiSuccess {String} error_code (Only when <code>status</code> is false) This holds the Error Code.
      * @apiSuccess {String} jwt_token (Only when <code>status</code> is true) This is the valid JWT Token
+     * @apiSuccess {String} payload (Only when <code>status</code> is true) this holds the account Informations.
      */
     app.post('/account/signin', Controller.signIn);
 
@@ -30,6 +31,7 @@ module.exports = (app) => {
      *
      * @apiSuccess {Boolean} status This is true when success
      * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
+     * @apiSuccess {String} payload (Only when <code>status</code> is false) this holds the Validation Informations.
      */
     app.post('/account/signup', Controller.signUp);
 

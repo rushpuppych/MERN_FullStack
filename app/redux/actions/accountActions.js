@@ -6,18 +6,20 @@ import sha256 from 'sha256';
  * signinAccount
  * This Action is used to login a user.
  */
-export const signinAccount = (signinData) => dispatch => {
+export const signinAccount = (localState) => dispatch => {
     // Hash Password and PasswordRe
+    let signinData = {...localState};
     signinData.password = sha256(signinData.password);
 
     // Send Signin Data
     axios.post('http://localhost:4000/account/signin/', signinData).then((response) => {
         if(response.data.status === 'true') {
+            console.log(response.data.payload);
             dispatch({
                 type: SIGNIN_ACCOUNT,
                 payload: response.data.payload
             });
-            window.location.reload(false); 
+            //window.location.reload(false); 
         } else {
             alert(response.data.error_code)
         }

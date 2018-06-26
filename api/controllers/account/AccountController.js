@@ -16,6 +16,7 @@ const privateController = {
 const publicController = {
     // SignIn Method
     signIn: (req, res) => {
+        console.log(req.body.email, sha256(config.security.hash_salt + '::' + req.body.password));
         AccountModel.findOne({
             email: req.body.email,
             password: sha256(config.security.hash_salt + '::' + req.body.password)
@@ -54,7 +55,6 @@ const publicController = {
                 }});
                 return;
             } else {
-                console.log(req.body.password, req.body.passwordre);
                 if(req.body.password !== req.body.passwordre) {
                     res.json({'status': 'false', 'error_code': 'VALIDATION_ERROR', 'payload': {
                         password: {message: 'PASSWORD_NOT_IDENTICAL'}
