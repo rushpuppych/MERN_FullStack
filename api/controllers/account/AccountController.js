@@ -22,15 +22,18 @@ const publicController = {
         } ,(err, account) => {
             if(err != null) {res.status(404);res.send('DB_ERROR');return}
             if(account != null) {
-
                 // Check if user is blocked
-                // TODO: this comes later
+                if(!account.vertificated) {
+                    res.json({'status': 'false' , 'error_code': 'ACCOUNT_NOT_VALIDATED'});
+                    return;                    
+                }
 
                 // Create and Sign JWT Token
+                account.password = '-SECURE-';
                 const cert = fs.readFileSync('./' + config.security.jwt_cert); 
                 const payload = {foo: 'bar'};
                 const token = jwt.sign(payload, cert, {algorithm: 'RS256', expiresIn: '12h'});
-                res.json({'status': 'true' , 'jwt_token': token});
+                res.json({'status': 'true' , 'jwt_token': token, 'payload': account});
                 return;
             } else {
                 res.json({'status': 'false' , 'error_code': 'INVALID_CREDENTIALS'});
@@ -41,17 +44,35 @@ const publicController = {
 
     // SignUp Method
     signUp: (req, res) => {
-        // todo: Check if Email is existing
-    
-        req.body.password = sha256(config.security.hash_salt + '::' + req.body.password);
-        const account = new AccountModel(req.body);
-    
-        // todo: Schema Validation
-
-        account.save((err) => {
+        AccountModel.findOne({
+            email: req.body.email
+        } ,(err, account) => {
             if(err != null) {res.status(404);res.send('DB_ERROR');return}
-            res.json({'status': 'true'});
-        });
+            if(account != null) {
+                res.json({'status': 'false', 'error_code': 'VALIDATION_ERROR', 'payload': {
+                    email: {message: 'EMAIL_IS_EXISTING'}
+                }});
+                return;
+            } else {
+                console.log(req.body.password, req.body.passwordre);
+                if(req.body.password !== req.body.passwordre) {
+                    res.json({'status': 'false', 'error_code': 'VALIDATION_ERROR', 'payload': {
+                        password: {message: 'PASSWORD_NOT_IDENTICAL'}
+                    }});
+                    return;
+                }                
+                req.body.vertificated = false;
+                req.body.password = sha256(config.security.hash_salt + '::' + req.body.password);
+                const account = new AccountModel(req.body);
+                account.save((err) => {
+                    if(err != null) {
+                        res.json({'status': 'false', 'error_code': 'VALIDATION_ERROR', 'payload': err.errors});
+                        return;
+                    }
+                    res.json({'status': 'true'});
+                });
+            }
+        })
     },
 
     // Email Vertification Method

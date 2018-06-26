@@ -1,3 +1,4 @@
+import { SIGNIN_ACCOUNT } from '../actions/types'; 
 import axios from 'axios';
 import sha256 from 'sha256';
 
@@ -12,6 +13,10 @@ export const signinAccount = (signinData) => dispatch => {
     // Send Signin Data
     axios.post('http://localhost:4000/account/signin/', signinData).then((response) => {
         if(response.data.status === 'true') {
+            dispatch({
+                type: SIGNIN_ACCOUNT,
+                payload: response.data.payload
+            });
             window.location.reload(false); 
         } else {
             alert(response.data.error_code)
@@ -35,7 +40,8 @@ export const signupAccount = (signupData) => dispatch => {
         if(response.data.status === 'true') {
             alert('account_created');
         } else {
-            alert(response.data.error_code)
+            alert(response.data.error_code);
+            console.log(response.data);
         }
     }).catch((error) => {
         alert('technical_error');

@@ -12,6 +12,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGNIN_ACCOUNT:
+            console.log(action.payload);
             return {
                 ...state,
                 account: action.payload
