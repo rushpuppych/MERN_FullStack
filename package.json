@@ -37,6 +37,8 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.1.5",
     "mongose": "0.0.2-security",
+    "mustache": "^2.3.0",
+    "nodemailer": "^4.6.7",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",

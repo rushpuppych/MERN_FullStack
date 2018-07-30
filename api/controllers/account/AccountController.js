@@ -2,6 +2,7 @@
 // Include Models and Helpers
 const AccountModel = require('../../models/account/AccountModel');
 const StringHelper = require('../../helpers/StringHelper');
+const MailBuilderHelper = require('../../helpers/MailBuilderHelper');
 const fs = require('fs');
 const sha256 = require('sha256');
 const jwt = require('jsonwebtoken');
@@ -16,7 +17,6 @@ const privateController = {
 const publicController = {
     // SignIn Method
     signIn: (req, res) => {
-        console.log(req.body.email, sha256(config.security.hash_salt + '::' + req.body.password));
         AccountModel.findOne({
             email: req.body.email,
             password: sha256(config.security.hash_salt + '::' + req.body.password)
@@ -25,6 +25,7 @@ const publicController = {
             if(account != null) {
                 // Check if user is blocked
                 if(!account.vertificated) {
+                    publicController.sendVertificationMail();
                     res.json({'status': 'false' , 'error_code': 'ACCOUNT_NOT_VALIDATED'});
                     return;                    
                 }
@@ -69,6 +70,8 @@ const publicController = {
                         res.json({'status': 'false', 'error_code': 'VALIDATION_ERROR', 'payload': err.errors});
                         return;
                     }
+
+                    publicController.sendVertificationMail();
                     res.json({'status': 'true'});
                 });
             }
@@ -85,6 +88,14 @@ const publicController = {
         const newPassword = StringHelper.generateRandomPassword(8);
         res.json({'status': 'true'});
     },
+
+    sendVertificationMail: () => {
+        MailBuilderHelper.setBackgroundImage();
+    },
+
+    sendNewPasswordMail: () => {
+
+    }
 };
   
 module.exports = publicController;

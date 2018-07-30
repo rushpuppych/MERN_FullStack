@@ -1,6 +1,0 @@
-MongoDB shell version v3.6.5
-connecting to: mongodb://127.0.0.1:27017/dbs
-2018-06-26T17:48:26.745+0200 W NETWORK  [thread1] Failed to connect to 127.0.0.1:27017 after 5000ms milliseconds, giving up.
-2018-06-26T17:48:26.745+0200 E QUERY    [thread1] Error: couldn't connect to server 127.0.0.1:27017, connection attempt failed :
-connect@src/mongo/shell/mongo.js:251:13
-@(connect):1:6

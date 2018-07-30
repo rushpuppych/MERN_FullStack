@@ -5,25 +5,17 @@
 
 ## NextSteps
 - Adding JWT Middleware for the routes
-- Axios Response Extract Token
 
 ## Major Todos
-- MongoDb Connection
-- Test API
 - Find a good way for generated Doc
-- Adding JWT Mechanism for Stateless REST
-- Integration AXIOS, REDUX
+- Adding UnitTests
+- Sending Emails
 
 ## Fullstack ToDos
-- Build Login Page
 - Add Email Support
-- Create Account
 - RobotChecker
 - Email Verification
-- Signup
 - Password Forgot
-- Signin
-- Inside Page
 - DSVGO Integration
 
 ## Documentation
