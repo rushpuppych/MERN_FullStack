@@ -45,10 +45,17 @@ class signupPanel extends Component {
      * React Render Component Method
      */
     render() {
+        const imageStyle = {
+            width: '40%',
+            backgroundImage: 'url("/images/webapp/Color4.jpg")',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+        };
+
         return (
             <Row>
                 <Col xl={6} l={8} m={12} s={12} offset="xl3 l2">
-                    <Card horizontal header={<CardTitle image="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/2038533/1360/2053/m1/fpnw/wm1/t7ynrw1dvuchkdmejisst80fqdicgaymyanvvchfm9vzjjhhwlfsleoo5mmbyllv-.jpg?1481968520&s=507cb8cdaf6d036994f8ab2d77cdc207"></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
+                    <Card horizontal header={<CardTitle style={imageStyle}></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
                         actions={[
                             <Button key="signup_button" onClick={this.onSignup} waves='light'>{Lang.signup_button}<Icon right>person_add</Icon></Button>
                         ]}>

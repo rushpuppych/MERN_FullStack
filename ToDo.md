@@ -10,9 +10,9 @@
 - Find a good way for generated Doc
 - Adding UnitTests
 - Sending Emails
+- Translations Good Practice
 
 ## Fullstack ToDos
-- Add Email Support
 - RobotChecker
 - Email Verification
 - Password Forgot

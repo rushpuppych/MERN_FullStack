@@ -1,23 +1,15 @@
 
+const config = require('../../api/api.config');
+const fs = require('fs');
+const mustache = require('mustache');
+const nodemailer = require('nodemailer');
+
 const privates = {
     options: {
         template: 'DefaultTemplate',
-        resources: [],
-        blocks: []
+        placeholder_text: [],
+        placeholder_html: []
     },
-
-    getBase64Image: (path) => {
-        return '';
-    },
-
-    addResource: (resource) => {
-        privates.options.resources.push(resource);
-        return privates.options.resources.length - 1;
-    },
-
-    getResource: (index) => {
-        return privates.options.resources[index];
-    }
 }
 
 const mailBuilderHelper = {
@@ -25,18 +17,59 @@ const mailBuilderHelper = {
         privates.options.template = template;
     },
 
-    setBackgroundImage: (path) => {
-        const image = privates.getBase64Image(path);
-        // todo: Set image to HTML Background
-    },
-
     getHtmlCode: () => {
-        // todo: Return HTML Formated Email
+        var content = String(fs.readFileSync("./api/helpers/MailTemplates/" + privates.options.template + '.html'));
+        var result = mustache.render(content, privates.options.placeholder_html);
+        return result;
     },
 
     getPlainText: () => {
-        // todo: Return Plain Text Formated Email
+        var content = String(fs.readFileSync("./api/helpers/MailTemplates/" + privates.options.template + '.txt'));
+        var result = mustache.render(content, privates.options.placeholder_text);
+        return result;
     },
+
+    addPlaceholder: (placeholder, value) => {
+        if(placeholder.substr(0, 5) === 'text:') {
+            placeholder = placeholder.substr(5);
+            privates.options.placeholder_text[placeholder] = value;
+        } else if(placeholder.substr(0, 5) === 'html:') {
+            placeholder = placeholder.substr(5);
+            privates.options.placeholder_html[placeholder] = value;
+        } else {
+            privates.options.placeholder_text[placeholder] = value;
+            privates.options.placeholder_html[placeholder] = value;   
+        }
+    },
+
+    sendMail: (toAddress, subject) => {
+        let status = false;
+        let transporter = nodemailer.createTransport(config.nodemailer.transport);
+        transporter.verify(function(error, success) {
+            if (!error) {
+                // Create Mail Options
+                let mailOptions = {
+                    from: config.nodemailer.from,
+                    to: toAddress,
+                    subject: subject,
+                    text: mailBuilderHelper.getPlainText(),
+                    html: mailBuilderHelper.getHtmlCode()
+                };
+
+                // Send Mail
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (!error) {
+                        status = true;
+                    } else {
+                        console.log(error);
+                    }
+                });
+            } else {
+                console.log(error);
+            }
+         });
+         return status;
+    }
 };
   
 module.exports = mailBuilderHelper;

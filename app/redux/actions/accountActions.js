@@ -1,4 +1,5 @@
 import { SIGNIN_ACCOUNT } from '../actions/types'; 
+import config from '../../app.config';
 import axios from 'axios';
 import sha256 from 'sha256';
 
@@ -12,7 +13,7 @@ export const signinAccount = (localState) => dispatch => {
     signinData.password = sha256(signinData.password);
 
     // Send Signin Data
-    axios.post('http://localhost:4000/account/signin/', signinData).then((response) => {
+    axios.post(config.paths.api + 'account/signin/', signinData).then((response) => {
         if(response.data.status === 'true') {
             console.log(response.data.payload);
             dispatch({
@@ -38,7 +39,7 @@ export const signupAccount = (signupData) => dispatch => {
     signupData.passwordre = sha256(signupData.passwordre);
 
     // Send Signup Data
-    axios.post('http://localhost:4000/account/signup/', signupData).then((response) => {
+    axios.post(config.paths.api + 'account/signup/', signupData).then((response) => {
         if(response.data.status === 'true') {
             alert('account_created');
         } else {

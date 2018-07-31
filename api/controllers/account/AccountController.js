@@ -6,11 +6,45 @@ const MailBuilderHelper = require('../../helpers/MailBuilderHelper');
 const fs = require('fs');
 const sha256 = require('sha256');
 const jwt = require('jsonwebtoken');
-const config = require('../../../config/api.config');
+const config = require('../../../api/api.config');
 
 // Private Controller
 const privateController = {
-    // this is all Private and will not be exported
+    sendVertificationMail: (emailAddress, accountcode) => {
+        MailBuilderHelper.setMailTemplate('defaultTemplate');
+        MailBuilderHelper.addPlaceholder('mail_subject', 'Please klick the vertification lînk.');
+        MailBuilderHelper.addPlaceholder('preheader', 'Welcome to MERN');
+        MailBuilderHelper.addPlaceholder('content_title', 'Account vertification');
+        MailBuilderHelper.addPlaceholder('content_first', 'Welcome to MERN the OpenSource free available MERN Stack.');
+        MailBuilderHelper.addPlaceholder('html:content_second', "You need to vertificate your Account by pressing the link below.\n" + '<a href="' + config.paths.web + "account/vertification/" + accountcode + '">Vertification link</a>');
+        MailBuilderHelper.addPlaceholder('text:content_second', "You need to vertificate your Account by pressing the link below.\n" + config.paths.web + "account/vertification/" + accountcode);
+        MailBuilderHelper.addPlaceholder('content_end', 'Thanks, your MERN Team');
+        MailBuilderHelper.addPlaceholder('powered_text', 'MERN_FullStack');
+        MailBuilderHelper.addPlaceholder('company_address', 'MERN Company, Secretplace, AA-9999 Villagetown')
+        MailBuilderHelper.addPlaceholder('powered_link', 'https://github.com/rushpuppych/MERN_FullStack');
+        MailBuilderHelper.addPlaceholder('powered_text', 'MERN_FullStack');
+        MailBuilderHelper.addPlaceholder('unsubscribe_link', 'https://media.giphy.com/media/xT77XZrTKOxycjaYvK/giphy.gif');
+        
+        const status = MailBuilderHelper.sendMail(emailAddress, 'Welcome to MERN, Account vertification.');
+        return status;
+    },
+
+    sendNewPasswordMail: (email, password) => {
+        MailBuilderHelper.setMailTemplate('defaultTemplate');
+        MailBuilderHelper.addPlaceholder('mail_subject', 'Your Password restored !');
+        MailBuilderHelper.addPlaceholder('preheader', 'Your MERN Password is now restored.');
+        MailBuilderHelper.addPlaceholder('content_title', 'Your new MERN Password');
+        MailBuilderHelper.addPlaceholder('content_first', 'Please change the Password after your first login.');
+        MailBuilderHelper.addPlaceholder('content_second', "Use the folowing password for signup:\n" + password);
+        MailBuilderHelper.addPlaceholder('content_end', 'Thanks, your MERN Team');
+        MailBuilderHelper.addPlaceholder('powered_text', 'MERN_FullStack');
+        MailBuilderHelper.addPlaceholder('company_address', 'MERN Company, Secretplace, AA-9999 Villagetown')
+        MailBuilderHelper.addPlaceholder('powered_link', 'https://github.com/rushpuppych/MERN_FullStack');
+        MailBuilderHelper.addPlaceholder('unsubscribe_link', 'https://media.giphy.com/media/xT77XZrTKOxycjaYvK/giphy.gif');
+        
+        const status = MailBuilderHelper.sendMail(emailAddress, 'Welcome to MERN, Account vertification.');
+        return status;
+    }
 };
 
 // Public Controller
@@ -25,7 +59,7 @@ const publicController = {
             if(account != null) {
                 // Check if user is blocked
                 if(!account.vertificated) {
-                    publicController.sendVertificationMail();
+                    privateController.sendVertificationMail(account.email, account.id);
                     res.json({'status': 'false' , 'error_code': 'ACCOUNT_NOT_VALIDATED'});
                     return;                    
                 }
@@ -71,8 +105,8 @@ const publicController = {
                         return;
                     }
 
-                    publicController.sendVertificationMail();
-                    res.json({'status': 'true'});
+                    const status = privateController.sendVertificationMail(account.email, account.id);
+                    res.json({'status': status});
                 });
             }
         })
@@ -86,15 +120,9 @@ const publicController = {
     // Password Reset Method
     reset: (req, res) => {
         const newPassword = StringHelper.generateRandomPassword(8);
-        res.json({'status': 'true'});
-    },
-
-    sendVertificationMail: () => {
-        MailBuilderHelper.setBackgroundImage();
-    },
-
-    sendNewPasswordMail: () => {
-
+        const status = privateController.sendNewPasswordMail(res.body.email, newPassword);
+        // TODO: SAVE NEW PASSWORD TO DB
+        res.json({'status': status});
     }
 };
   
