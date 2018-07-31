@@ -45,7 +45,7 @@ module.exports = (app) => {
      * @apiSuccess {Boolean} status This is true when success
      * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
      */
-    app.get('/account/vertification', Controller.vertification);
+    app.get('/account/vertification/:id', Controller.vertification);
 
     /**
      * @apiGroup Account
@@ -57,5 +57,5 @@ module.exports = (app) => {
      * @apiSuccess {Boolean} status This is true when success
      * @apiSuccess {String} error_code (Only when <code>status</code> is false) this holds the Error Code.
      */
-    app.get('/account/reset', Controller.reset);    
+    app.get('/account/reset/:email', Controller.reset);    
 }

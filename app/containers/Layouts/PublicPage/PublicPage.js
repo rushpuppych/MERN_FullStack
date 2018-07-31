@@ -22,6 +22,7 @@ class PublicPage extends Component {
 
                 <main>
                     <Route path="/" exact component={LoginPanel} />
+                    <Route path="/signin" exact component={LoginPanel} />
                     <Route path="/signup" exact component={SignupPanel} />
                     <Route path="/restore" exact component={PasswordRestorePanel} />
                 </main>

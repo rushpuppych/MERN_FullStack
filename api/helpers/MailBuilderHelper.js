@@ -58,9 +58,7 @@ const mailBuilderHelper = {
 
                 // Send Mail
                 transporter.sendMail(mailOptions, (error, info) => {
-                    if (!error) {
-                        status = true;
-                    } else {
+                    if (error) {
                         console.log(error);
                     }
                 });
@@ -68,7 +66,6 @@ const mailBuilderHelper = {
                 console.log(error);
             }
          });
-         return status;
     }
 };
   

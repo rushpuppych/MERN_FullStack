@@ -11,11 +11,11 @@
 - Adding UnitTests
 - Sending Emails
 - Translations Good Practice
+- Beautifull Alert boxes on Errors
+- Background Images (FileSize max 120kb)
+- React Router Transitions (simple not much code)
 
 ## Fullstack ToDos
-- RobotChecker
-- Email Verification
-- Password Forgot
 - DSVGO Integration
 
 ## Documentation

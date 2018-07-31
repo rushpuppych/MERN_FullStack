@@ -51,6 +51,24 @@ export const signupAccount = (signupData) => dispatch => {
     })
 }
 
+/**
+ * signupAccount
+ * This action is used to signup a user.
+ */
+export const resetAccountPassword = (resetData) => dispatch => {
+    // Send Signup Data
+    axios.get(config.paths.api + 'account/reset/' + resetData.email).then((response) => {
+        if(response.data.status === 'true') {
+            alert('password_reseted');
+        } else {
+            alert(response.data.error_code);
+            console.log(response.data);
+        }
+    }).catch((error) => {
+        alert('technical_error');
+    })
+}
+
 // this is only needed on state changes
 // import { SIGNIN_ACCOUNT, SIGNUP_ACCOUNT } from '../actions/types'; 
 /* no dispatch needet because no store change

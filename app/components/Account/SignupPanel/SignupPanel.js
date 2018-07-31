@@ -55,7 +55,7 @@ class signupPanel extends Component {
         return (
             <Row>
                 <Col xl={6} l={8} m={12} s={12} offset="xl3 l2">
-                    <Card horizontal header={<CardTitle style={imageStyle}></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
+                    <Card horizontal header={<CardTitle style={imageStyle} image=""></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
                         actions={[
                             <Button key="signup_button" onClick={this.onSignup} waves='light'>{Lang.signup_button}<Icon right>person_add</Icon></Button>
                         ]}>
