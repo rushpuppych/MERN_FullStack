@@ -1,0 +1,17 @@
+Subject: {{{mail_subject}}}
+Summary: {{{preheader}}}
+
+
+{{{content_title}}}
+
+{{{content_first}}}
+{{{content_second}}}
+
+{{{content_end}}}
+
+
+
+Powered by {{{powered_text}}}
+{{{powered_link}}}
+
+Don't like these emails? Use this link for unsubscription ({{{unsubscribe_link}}})

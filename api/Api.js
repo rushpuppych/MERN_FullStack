@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-const config = require('../config/api.config.js');
+const config = require('./api.config.js');
 
 // Config and set BodyParser
 app.use(bodyParser.urlencoded({ extended: true }))

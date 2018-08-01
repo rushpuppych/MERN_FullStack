@@ -1,4 +1,5 @@
 import { SIGNIN_ACCOUNT } from '../actions/types'; 
+import config from '../../app.config';
 import axios from 'axios';
 import sha256 from 'sha256';
 
@@ -12,14 +13,14 @@ export const signinAccount = (localState) => dispatch => {
     signinData.password = sha256(signinData.password);
 
     // Send Signin Data
-    axios.post('http://localhost:4000/account/signin/', signinData).then((response) => {
+    axios.post(config.paths.api + 'account/signin/', signinData).then((response) => {
         if(response.data.status === 'true') {
             console.log(response.data.payload);
             dispatch({
                 type: SIGNIN_ACCOUNT,
                 payload: response.data.payload
             });
-            //window.location.reload(false); 
+            window.location.reload(false); 
         } else {
             alert(response.data.error_code)
         }
@@ -38,9 +39,27 @@ export const signupAccount = (signupData) => dispatch => {
     signupData.passwordre = sha256(signupData.passwordre);
 
     // Send Signup Data
-    axios.post('http://localhost:4000/account/signup/', signupData).then((response) => {
+    axios.post(config.paths.api + 'account/signup/', signupData).then((response) => {
         if(response.data.status === 'true') {
             alert('account_created');
+        } else {
+            alert(response.data.error_code);
+            console.log(response.data);
+        }
+    }).catch((error) => {
+        alert('technical_error');
+    })
+}
+
+/**
+ * signupAccount
+ * This action is used to signup a user.
+ */
+export const resetAccountPassword = (resetData) => dispatch => {
+    // Send Signup Data
+    axios.get(config.paths.api + 'account/reset/' + resetData.email).then((response) => {
+        if(response.data.status === 'true') {
+            alert('password_reseted');
         } else {
             alert(response.data.error_code);
             console.log(response.data);

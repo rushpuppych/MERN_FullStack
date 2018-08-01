@@ -5,25 +5,16 @@
 
 ## NextSteps
 - Adding JWT Middleware for the routes
-- Axios Response Extract Token
 
 ## Major Todos
-- MongoDb Connection
-- Test API
 - Find a good way for generated Doc
-- Adding JWT Mechanism for Stateless REST
-- Integration AXIOS, REDUX
+- Adding UnitTests
+- Translations Good Practice
+- Beautifull Alert boxes on Errors
+- Background Images (FileSize max 120kb)
+- React Router Transitions (simple not much code)
 
 ## Fullstack ToDos
-- Build Login Page
-- Add Email Support
-- Create Account
-- RobotChecker
-- Email Verification
-- Signup
-- Password Forgot
-- Signin
-- Inside Page
 - DSVGO Integration
 
 ## Documentation
