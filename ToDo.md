@@ -10,9 +10,9 @@
 - Find a good way for generated Doc
 - Adding UnitTests
 - Translations Good Practice
-- Beautifull Alert boxes on Errors
 - Background Images (FileSize max 120kb)
 - React Router Transitions (simple not much code)
+- Materialize Sidebar (minified) doesnt works!! its not posible to klick a link !!!!!
 
 ## Fullstack ToDos
 - DSVGO Integration

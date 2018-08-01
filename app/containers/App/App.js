@@ -3,13 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Cookie from 'cookie-machine';
 import PublicPage from '../../containers/Layouts/PublicPage/PublicPage';
 import PrivatePage from '../../containers/Layouts/PrivatePage/PrivatePage';
-//import $ from 'jquery';
 
 class App extends Component {
-  componentDidMount() {
-    // Modal Run Code
-  }
-
   render() {
     // Load JWT Token from Cookie
     const token = Cookie.get('jwt_token');

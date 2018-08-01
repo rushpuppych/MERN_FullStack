@@ -2,6 +2,7 @@ import { SIGNIN_ACCOUNT } from '../actions/types';
 import config from '../../app.config';
 import axios from 'axios';
 import sha256 from 'sha256';
+import util from '../../assets/scripts/util';
 
 /**
  * signinAccount
@@ -15,17 +16,16 @@ export const signinAccount = (localState) => dispatch => {
     // Send Signin Data
     axios.post(config.paths.api + 'account/signin/', signinData).then((response) => {
         if(response.data.status === 'true') {
-            console.log(response.data.payload);
             dispatch({
                 type: SIGNIN_ACCOUNT,
                 payload: response.data.payload
             });
             window.location.reload(false); 
         } else {
-            alert(response.data.error_code)
+            util.showToast(response.data.error_code);
         }
     }).catch((error) => {
-        alert('technical_error');
+        util.showToast('Oops!: technical_error');
     })
 }
 
@@ -42,12 +42,12 @@ export const signupAccount = (signupData) => dispatch => {
     axios.post(config.paths.api + 'account/signup/', signupData).then((response) => {
         if(response.data.status === 'true') {
             alert('account_created');
+            util.showModal('Account Created!', 'Your user account was successfully created.<br> Please check your mailbox and vertificate your account.');
         } else {
-            alert(response.data.error_code);
-            console.log(response.data);
+            util.showToast(response.data.error_code);
         }
     }).catch((error) => {
-        alert('technical_error');
+        util.showToast('Oops!: technical_error');
     })
 }
 
@@ -59,13 +59,12 @@ export const resetAccountPassword = (resetData) => dispatch => {
     // Send Signup Data
     axios.get(config.paths.api + 'account/reset/' + resetData.email).then((response) => {
         if(response.data.status === 'true') {
-            alert('password_reseted');
+            util.showModal('Password Reseted!', 'Your account password was successfully reseted.<br> Please check your mailbox for the new password.');
         } else {
-            alert(response.data.error_code);
-            console.log(response.data);
+            util.showToast(response.data.error_code);
         }
     }).catch((error) => {
-        alert('technical_error');
+        util.showToast('Oops!: technical_error');
     })
 }
 
