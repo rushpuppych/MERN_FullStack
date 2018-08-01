@@ -9,7 +9,16 @@ module.exports = {
     },
 
     nodemailer: {
-
+        from: '"MERN STACK 🎁" <demo@rushpuppy.ch>',
+        transport: {
+            host: 'asmtp.mail.hostpoint.ch',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'demo@rushpuppy.ch',
+                pass: 'Kprdn5mQ'
+            }
+        }
     },
 
     paths: {

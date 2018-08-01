@@ -9,7 +9,6 @@
 ## Major Todos
 - Find a good way for generated Doc
 - Adding UnitTests
-- Sending Emails
 - Translations Good Practice
 - Beautifull Alert boxes on Errors
 - Background Images (FileSize max 120kb)
