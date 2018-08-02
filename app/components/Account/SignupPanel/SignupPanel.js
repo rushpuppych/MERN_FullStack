@@ -47,7 +47,7 @@ class signupPanel extends Component {
     render() {
         const imageStyle = {
             width: '40%',
-            backgroundImage: 'url("/images/webapp/Color4.jpg")',
+            backgroundImage: 'url("/images/webapp/Color4_sm.jpg")',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
         };

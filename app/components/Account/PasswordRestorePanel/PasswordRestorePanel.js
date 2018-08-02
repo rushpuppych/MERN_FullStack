@@ -43,7 +43,7 @@ class passwordRestorePanel extends Component {
     render() {
         const imageStyle = {
             width: '40%',
-            backgroundImage: 'url("/images/webapp/Color5.jpg")',
+            backgroundImage: 'url("/images/webapp/Color5_sm.jpg")',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
         };
