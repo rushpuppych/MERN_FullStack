@@ -1,0 +1,12 @@
+.switch-wrapper {
+    position: relative;
+}
+
+.switch-wrapper > div {
+    width: 100%;
+    position: absolute;
+}
+
+#sidenav-overlay {
+    z-index: 1;
+}

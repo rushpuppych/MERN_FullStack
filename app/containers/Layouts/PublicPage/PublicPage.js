@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 import { Row, Navbar } from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
@@ -21,10 +22,12 @@ class PublicPage extends Component {
                 </Row>
 
                 <main>
-                    <Route path="/" exact component={LoginPanel} />
-                    <Route path="/signin" exact component={LoginPanel} />
-                    <Route path="/signup" exact component={SignupPanel} />
-                    <Route path="/restore" exact component={PasswordRestorePanel} />
+                    <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className="switch-wrapper">
+                        <Route path="/" exact component={LoginPanel} />
+                        <Route path="/signin" exact component={LoginPanel} />
+                        <Route path="/signup" exact component={SignupPanel} />
+                        <Route path="/restore" exact component={PasswordRestorePanel} />
+                    </AnimatedSwitch>
                 </main>
             </Aux>
         );

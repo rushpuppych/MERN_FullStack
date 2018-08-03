@@ -10,11 +10,6 @@
 - Find a good way for generated Doc
 - Adding UnitTests
 - Translations Good Practice
-- React Router Transitions (simple not much code)
-- Materialize Sidebar (minified) doesnt works!! its not posible to klick a link !!!!!
-
-## Fullstack ToDos
-- DSVGO Integration
 
 ## Documentation
 - How to Work Whit the Fullstack Project

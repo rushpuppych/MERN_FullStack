@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 import { Row, Navbar } from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
@@ -19,7 +20,9 @@ class PrivatePage extends Component {
                     <p>This could be your Application!</p>
                 </main>
                 <main>
-                    <Route path="/logout" exact component={LogoutPanel} />
+                    <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className="switch-wrapper">                    
+                        <Route path="/logout" exact component={LogoutPanel} />
+                    </AnimatedSwitch>
                 </main>                
             </Aux>
         );
