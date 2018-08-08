@@ -9,7 +9,6 @@
 ## Major Todos
 - Find a good way for generated Doc
 - Adding UnitTests
-- Translations Good Practice
 
 ## Documentation
 - How to Work Whit the Fullstack Project

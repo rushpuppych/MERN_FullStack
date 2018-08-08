@@ -8,6 +8,8 @@ import './index.css';
 import App from './containers/App/App';
 import Theme from './assets/themes/Default';
 import Store from './redux/store';
+import I18n from "redux-i18n";
+import {translations} from "./assets/lang/translation";
 
 // Config Axios Request
 const token = cookie.get('jwt_token');
@@ -29,9 +31,18 @@ axios.interceptors.response.use(function(config) {
     return config;
 });
 
+// Get Language Information from Cookie
+const languageCode = cookie.get('cp_lang');
+
 // Setting Background Theme Class
 document.body.className = Theme.body.backgroundColor;
  
 // Rendering React App
-ReactDOM.render(<Provider store={Store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={Store}>
+        <I18n translations={translations} initialLang={languageCode} fallbackLang="en">
+            <App />
+        </I18n>
+    </Provider>, 
+document.getElementById('root'));
 registerServiceWorker();

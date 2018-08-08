@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { resetAccountPassword } from '../../../redux/actions/accountActions';
 import { Card, CardTitle, Button, Icon, Input, Row, Col } from 'react-materialize';
 import Theme from '../../../assets/themes/Default';
-import Lang from './PasswordRestorePanelLang';
+import PropTypes from 'prop-types'; 
 
 /**
  * ReactComponent
@@ -17,6 +17,11 @@ class passwordRestorePanel extends Component {
         this.onReset = this.onReset.bind(this);
         this.onChange = this.onChange.bind(this);
     }
+
+    // contextTypes
+    static contextTypes = {
+        t: PropTypes.func.isRequired
+    };    
 
     // Local State
     localState = {
@@ -51,13 +56,13 @@ class passwordRestorePanel extends Component {
         return (
             <Row>
             <Col xl={6} l={8} m={12} s={12} offset="xl3 l2">
-                <Card horizontal header={<CardTitle style={imageStyle} image=""></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
+                <Card horizontal header={<CardTitle style={imageStyle} image=""></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={this.context.t('Passwort Wiederherstellen')} 
                     actions={[
-                        <Button key="restore_button" onClick={this.onReset} waves='light'>{Lang.restore_button}<Icon right>email</Icon></Button>
+                        <Button key="restore_button" onClick={this.onReset} waves='light'>{this.context.t('Neues Passwort senden')}<Icon right>email</Icon></Button>
                     ]}>
-                    {Lang.content}
+                    {this.context.t('Bitte geben Sie ihre E-Mail ein.')}
                     <div>
-                        <Input name="email" onChange={this.onChange} label={Lang.email} s={12} />
+                        <Input name="email" onChange={this.onChange} label={this.context.t('E-Mail')} s={12} />
                     </div>
                     <p></p>
                 </Card>

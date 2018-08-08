@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { signinAccount } from '../../../redux/actions/accountActions';
 import { Card, CardTitle, Button, Icon, Input, Row, Col } from 'react-materialize';
 import Theme from '../../../assets/themes/Default';
-import Lang from './LoginPanelLang';
+import PropTypes from 'prop-types'; 
 
 /**
  * ReactComponent
@@ -17,6 +17,11 @@ class loginPanel extends Component {
         this.onSignin = this.onSignin.bind(this);
         this.onChange = this.onChange.bind(this);
     }
+
+    // contextTypes
+    static contextTypes = {
+        t: PropTypes.func.isRequired
+    };
 
     // Local State
     localState = {
@@ -51,14 +56,14 @@ class loginPanel extends Component {
         return (
             <Row>
                 <Col xl={6} l={8} m={12} s={12} offset="xl3 l2">
-                    <Card horizontal header={<CardTitle style={imageStyle} image=""></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={Lang.title} 
+                    <Card horizontal header={<CardTitle style={imageStyle} image=""></CardTitle>} className={Theme.components.demo.backgroundColor} textClassName={Theme.components.demo.textColor} title={this.context.t('Anmeldung')} 
                         actions={[
-                            <Button key="login_button" onClick={this.onSignin} waves='light'>{Lang.login_button}<Icon right>input</Icon></Button>
+                            <Button key="login_button" onClick={this.onSignin} waves='light'>{this.context.t('Anmelden')}<Icon right>input</Icon></Button>
                         ]}>
-                        {Lang.content}
+                        {this.context.t('Bitte geben Sie Ihre Kontodaten ein.')}
                         <div>
-                            <Input name="email" onChange={this.onChange} label={Lang.email} s={12} />
-                            <Input name="password" onChange={this.onChange} type="password" label={Lang.password} s={12} />
+                            <Input name="email" onChange={this.onChange} label={this.context.t('E-Mail')} s={12} />
+                            <Input name="password" onChange={this.onChange} type="password" label={this.context.t('Passwort')} s={12} />
                         </div>
                         <p></p>
                     </Card>

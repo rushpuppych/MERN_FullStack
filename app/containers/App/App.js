@@ -19,7 +19,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           {pageContainer}
-        </BrowserRouter>     
+        </BrowserRouter>
       </div>
     );
   }

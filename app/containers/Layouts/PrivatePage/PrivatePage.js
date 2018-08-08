@@ -5,8 +5,14 @@ import { Row, Navbar } from 'react-materialize';
 import Aux from '../../../hoc/ReactAux';
 import Theme from '../../../assets/themes/Default';
 import LogoutPanel from '../../../components/Account/LogoutPanel/LogoutPanel';
+import PropTypes from 'prop-types'; 
 
 class PrivatePage extends Component {
+    // contextTypes
+    static contextTypes = {
+        t: PropTypes.func.isRequired
+    };
+
     render() {
         return (
             <Aux>
@@ -18,6 +24,10 @@ class PrivatePage extends Component {
                 <main>
                     <h1>Private Area</h1>
                     <p>This could be your Application!</p>
+                    <br />
+                    <strong>Your current language, is:</strong><br/>
+                    {this.context.t("Test Text")}<br/>
+
                 </main>
                 <main>
                     <AnimatedSwitch atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} className="switch-wrapper">                    
