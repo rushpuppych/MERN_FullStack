@@ -1,6 +1,9 @@
 export const translations = {
     "de": {
+      "Abmelden": "Abmelden",
       "Anmeldung": "Anmeldung",
+      "Registrierung": "Registrierung",
+      "Wiederherstellung": "Wiederherstellung",
       "Bitte geben Sie Ihre Kontodaten ein.": "Bitte geben Sie Ihre Kontodaten ein.",
       "E-Mail": "E-Mail",
       "Passwort": "Passwort",
@@ -13,10 +16,13 @@ export const translations = {
       "Vorname": "Vorname",
       "Name": "Name",
       "Passwort Wiederhohlung": "Passwort Wiederhohlung",
-      "Registrieren": "Registrieren"      
+      "Registrieren": "Registrieren"   
     },
     "en": {
+      "Abmelden": "Logout",
       "Anmeldung": "Login",
+      "Registrierung": "SignUp",
+      "Wiederherstellung": "Restore",
       "Bitte geben Sie Ihre Kontodaten ein.": "Please enter your credentials.",
       "E-Mail": "Email",
       "Passwort": "Password",
